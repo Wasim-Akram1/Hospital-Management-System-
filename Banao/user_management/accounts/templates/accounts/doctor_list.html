@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Doctors List</h1>
+    <ul>
+        {% for doctor in doctors %}
+        <li>
+            <img src="{{ doctor.user.profile.profile_picture.url }}" alt="Profile Picture" width="50" height="50">
+            <span>{{ doctor.user.profile.first_name }} {{ doctor.user.profile.last_name }}</span>
+            <a href="{% url 'book_appointment' doctor.id %}">Book Appointment</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
